@@ -63,10 +63,12 @@ const appData = {
     },
 
     addPrices: function () {
-        for (let screen of appData.screens) {
-            appData.screenPrice += +screen.price
-        }
+        
+        appData.screenPrice  = this.screens.reduce(function(acc,i){
+            return acc +  (+i.price)
 
+        },0)
+        
         for (key in appData.services) {
             appData.allServicePrices += this.services[key]
         }
@@ -104,6 +106,7 @@ const appData = {
 
     },
     logger: function () {
+        console.log(appData.screenPrice)
         console.log(this.fullPrice)
         console.log(this.servicePercentPrice)
         console.log(appData.screens)
